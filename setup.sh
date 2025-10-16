@@ -5,6 +5,7 @@
 # For personal use only!
 # This is a script for quick setup on new installations,
 # tailored to my personal use cases.
+# Be sure to update at least once a month.
 
 # Remove Debian's preinstalled bloatware
 sudo apt purge $(cat bloat.list)

@@ -38,13 +38,13 @@ sudo systemctl start clamav-freshclam.service && sudo systemctl enable clamav-fr
 sudo systemctl start clamav-freshclam-once.timer && sudo systemctl enable clamav-freshclam-once.timer
 sudo systemctl enable clamav-milter.service
 
-# Setup ufw
+# Set up ufw
 sudo systemctl start ufw.service
 sudo systemctl enable ufw.service
 sudo ufw default deny
 sudo ufw enable
 
-# Setup rkhunter
+# Set up rkhunter
 sudo rkhunter --propupd
 
 # Install ProtonVPN

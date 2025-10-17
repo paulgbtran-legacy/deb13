@@ -7,6 +7,9 @@
 # tailored to my personal use cases.
 # Be sure to update at least once a month.
 
+# Perform updates before setting up new packages.
+sudo apt update && sudo apt upgrade
+
 # Remove Debian's preinstalled bloatware
 sudo apt purge $(cat bloat.list)
 sudo apt autoremove
@@ -25,13 +28,13 @@ sudo cp ./clamav/clamav /etc/sudoers.d/clamav
 sudo cp ./clamav/virus-event.bash /etc/clamav/virus-event.bash
 sudo cp ./clamav/clamav-milter.conf /etc/clamav/clamav-milter.conf
 sudo cp ./clamav/clamav-milter.service /etc/systemd/system/clamav-milter.service
-sudo cp ./clamav/override.conf /etc/systemd/system/clamav-clamonacc.service.d/override.conf
+sudo cp ./clamav/clamav-clamonacc.service /etc/systemd/clamav-clamonacc.service
 # Start all clamav services
 sudo systemctl start clamav-clamonacc.service && sudo systemctl enable clamav-clamonacc.service
 sudo systemctl start clamav-daemon.service && sudo systemctl enable clamav-daemon.service
 sudo systemctl start clamav-freshclam.service && sudo systemctl enable clamav-freshclam.service
 sudo systemctl start clamav-freshclam-once.timer && sudo systemctl enable clamav-freshclam-once.timer
-sudo systemctl start clamav-milter.service && sudo systemctl enable clamav-milter.service
+sudo systemctl enable clamav-milter.service
 
 # Setup ufw
 sudo systemctl start ufw.service
@@ -64,12 +67,10 @@ sudo rm microsoft.gpg
 sudo apt update && sudo apt install microsoft-edge-stable
 
 # Install Visual Studio Code
-sudo apt update
-sudo apt installapt-transport-https curl
-# sudo apt install software-properties-common
-curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/keyrings/microsoft-archive-keyring.gpg
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo apt update
 sudo apt install code
 
-rm -rf ./
+# rm -rf ./

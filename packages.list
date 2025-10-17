@@ -44,3 +44,4 @@ fail2ban
 traceroute
 nodejs
 npm
+wget

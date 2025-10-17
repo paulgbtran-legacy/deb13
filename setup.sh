@@ -29,6 +29,7 @@ sudo cp ./clamav/virus-event.bash /etc/clamav/virus-event.bash
 sudo cp ./clamav/clamav-milter.conf /etc/clamav/clamav-milter.conf
 sudo cp ./clamav/clamav-milter.service /etc/systemd/system/clamav-milter.service
 cat ./clamav/clamav-clamonacc.service | sudo systemctl edit clamav-clamonacc.service
+sudo systemctl daemon-reload
 # Start all clamav services
 sudo systemctl start clamav-clamonacc.service && sudo systemctl enable clamav-clamonacc.service
 sudo systemctl start clamav-daemon.service && sudo systemctl enable clamav-daemon.service

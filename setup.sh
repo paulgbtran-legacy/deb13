@@ -86,7 +86,17 @@ sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/Unity_Technologies_ApS.gpg]
 sudo apt update
 sudo apt install unityhub
 
+# Set up Flathub
+sudo apt install gnome-software-plugin-flatpak
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
 # Install fonts to system
 sudo cp ./fonts/* /usr/share/fonts/
+
+# Displays completion message.
+echo
+echo
+echo 'Basic setup completed.'
+echo 'To install Python packages, run python.sh. Otherwise, restart and run flathub.sh to install Flathub packages.'
 
 # rm -rf ./

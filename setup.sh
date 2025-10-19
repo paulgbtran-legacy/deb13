@@ -28,7 +28,12 @@ sudo cp ./clamav/clamav /etc/sudoers.d/clamav
 sudo cp ./clamav/virus-event.bash /etc/clamav/virus-event.bash
 sudo cp ./clamav/clamav-milter.conf /etc/clamav/clamav-milter.conf
 sudo cp ./clamav/clamav-milter.service /etc/systemd/system/clamav-milter.service
-# wl-copy -o $(cat ./clamav/clamav-clamonacc.service)
+echo -e "The program will now copy the necessary script from clamav-clamonacc.service\n\
+into the clipboard. You will need to paste this into a new nano program that will open\n\
+after this in order to complete clamav setup. Close this nano program to continue." > instruction.txt
+nano instruction.txt
+rm instruction.txt
+cat ./clamav/clamav-clamonacc.service | wl-copy
 sudo systemctl edit clamav-clamonacc.service # Needs manual user pasting afterwards
 sudo systemctl daemon-reload
 # Start all clamav services

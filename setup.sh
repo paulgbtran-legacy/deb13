@@ -28,7 +28,7 @@ sudo cp ./clamav/clamav /etc/sudoers.d/clamav
 sudo cp ./clamav/virus-event.bash /etc/clamav/virus-event.bash
 sudo cp ./clamav/clamav-milter.conf /etc/clamav/clamav-milter.conf
 sudo cp ./clamav/clamav-milter.service /etc/systemd/system/clamav-milter.service
-wl-copy --primary $(cat ./clamav/clamav-clamonacc.service)
+# wl-copy -o $(cat ./clamav/clamav-clamonacc.service)
 sudo systemctl edit clamav-clamonacc.service # Needs manual user pasting afterwards
 sudo systemctl daemon-reload
 # Start all clamav services
@@ -74,5 +74,8 @@ sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/keyrings/microsoft-ar
 sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo apt update
 sudo apt install code
+
+# Install fonts to system
+sudo cp ./fonts/* /usr/share/fonts/
 
 # rm -rf ./

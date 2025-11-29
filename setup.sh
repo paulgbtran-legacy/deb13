@@ -7,6 +7,7 @@
 # tailored to my personal use cases.
 # Be sure to update at least once a month.
 
+sudo -v
 # Perform updates before setting up new packages.
 sudo apt update && sudo apt upgrade
 

@@ -100,4 +100,7 @@ echo
 echo 'Basic setup completed.'
 echo 'To install Python packages, run python.sh. Otherwise, restart and run flathub.sh to install Flathub packages.'
 
+# Syncs time (in case of dualboot)
+sudo systemctl enable --now systemd-timesyncd
+
 # rm -rf ./

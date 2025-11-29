@@ -47,4 +47,4 @@ npm
 wget
 wl-clipboard
 godot3
-kdeconnect
+systemd-timesyncd

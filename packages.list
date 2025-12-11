@@ -48,3 +48,5 @@ wget
 wl-clipboard
 godot3
 systemd-timesyncd
+clamtk
+zsh

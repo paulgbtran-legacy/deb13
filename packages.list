@@ -28,12 +28,9 @@ flatpak
 mc
 git
 gnome-multi-writer
-snapd
 gnome-shell-extensions
 gnome-shell-extension-manager
 gnome-shell-extension-prefs
-virt-manager
-qemu-kvm
 torcs
 ufw
 gufw

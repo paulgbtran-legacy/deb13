@@ -29,12 +29,10 @@ sudo cp ./clamav/clamav /etc/sudoers.d/clamav
 sudo cp ./clamav/virus-event.bash /etc/clamav/virus-event.bash
 sudo cp ./clamav/clamav-milter.conf /etc/clamav/clamav-milter.conf
 sudo cp ./clamav/clamav-milter.service /etc/systemd/system/clamav-milter.service
-echo -e "The program will now copy the necessary script from clamav-clamonacc.service\n\
-into the clipboard. You will need to paste this into a new nano program that will open\n\
-after this in order to complete clamav setup. Close this nano program to continue." > instruction.txt
+echo -e 'Copy these lines below to clamav-clamonacc.service: \n' > instruction.txt
+cat ./clamav/clamav-clamonacc.service >> instruction.txt
 nano instruction.txt
 rm instruction.txt
-cat ./clamav/clamav-clamonacc.service | wl-copy
 sudo systemctl edit clamav-clamonacc.service # Needs manual user pasting afterwards
 sudo systemctl daemon-reload
 # Start all clamav services
@@ -93,6 +91,17 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 
 # Install fonts to system
 sudo cp ./fonts/* /usr/share/fonts/
+
+# Install VirtualBox
+echo -e 'Copy this line into /etc/apt/sources.list:\n 
+deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian trixie contrib' > instructions.txt
+nano instructions.txt
+rm instructions.txt
+wget -O- https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo gpg --yes --output /usr/share/keyrings/oracle-virtualbox-2016.gpg --dearmor
+sudo apt update
+sudo apt install virtualbox-7.2
+sudo usermod -a -G vboxusers $(whoami)
+
 
 # Displays completion message.
 echo

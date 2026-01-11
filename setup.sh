@@ -69,11 +69,10 @@ warp-cli connect
 curl -fsS https://dl.brave.com/install.sh | sh
 
 # Install Visual Studio Code
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/keyrings/microsoft-archive-keyring.gpg
-sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
-sudo apt update
-sudo apt install code
+sudo apt-get install wget gpg && wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg && sudo install -D -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/microsoft.gpg && rm -f microsoft.gpg
+sudo cp ./vscode.sources /etc/apt/sources.list.d/vscode.sources
+sudo apt install apt-transport-https && sudo apt update && sudo apt install code # or code-insiders
+
 
 # Install Unity Hub
 wget -qO - https://hub.unity3d.com/linux/keys/public | gpg --dearmor | sudo tee /usr/share/keyrings/Unity_Technologies_ApS.gpg > /dev/null

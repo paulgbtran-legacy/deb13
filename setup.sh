@@ -65,8 +65,12 @@ sudo apt-get update && sudo apt-get install cloudflare-warp
 warp-cli registration new
 warp-cli connect
 
-# Install Brave
-curl -fsS https://dl.brave.com/install.sh | sh
+# Install Microsoft Edge
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-stable.list'
+sudo rm microsoft.gpg
+sudo apt update && sudo apt install microsoft-edge-stable
 
 # Install Visual Studio Code
 sudo apt-get install wget gpg && wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg && sudo install -D -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/microsoft.gpg && rm -f microsoft.gpg

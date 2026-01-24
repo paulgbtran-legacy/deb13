@@ -77,6 +77,8 @@ sudo apt-get install wget gpg && wget -qO- https://packages.microsoft.com/keys/m
 sudo cp ./vscode.sources /etc/apt/sources.list.d/vscode.sources
 sudo apt install apt-transport-https && sudo apt update && sudo apt install code # or code-insiders
 
+# Install Brave
+curl -fsS https://dl.brave.com/install.sh | sh
 
 # Install Unity Hub
 wget -qO - https://hub.unity3d.com/linux/keys/public | gpg --dearmor | sudo tee /usr/share/keyrings/Unity_Technologies_ApS.gpg > /dev/null

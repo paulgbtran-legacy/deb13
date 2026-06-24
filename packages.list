@@ -18,7 +18,6 @@ fonts-ebgaramond-extra
 fonts-noto
 fonts-cantarell
 screenfetch
-mugshot
 htop
 python3-full
 python3-pip
@@ -42,11 +41,7 @@ traceroute
 nodejs
 npm
 wget
-wl-clipboard
-godot3
-systemd-timesyncd
 clamtk
-zsh
-blueman
+tmux
 blender
 default-jdk

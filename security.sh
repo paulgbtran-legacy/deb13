@@ -28,7 +28,11 @@ sudo systemctl enable clamav-milter.service
 sudo systemctl start ufw.service
 sudo systemctl enable ufw.service
 sudo ufw default deny
+sudo ufw allow 443/tcp
+sudo ufw limit 22/tcp
 sudo ufw enable
 
 # Set up rkhunter
 sudo rkhunter --propupd
+
+sudo systemctl status clamav-clamonacc.service clamav-daemon.service clamav-freshclam.service clamav-freshclam-once.timer clamav-milter.service ufw.service rkhunter.service ufw.service rkhunter.service

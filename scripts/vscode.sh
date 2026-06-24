@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Install VSCode
+wget https://vscode.download.prss.microsoft.com/dbazure/download/stable/7e7950df89d055b5a378379db9ee14290772148a/code_1.126.0-1782208079_amd64.deb
+sudo apt install ./code_1.126.0-1782208079_amd64.deb

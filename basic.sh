@@ -15,3 +15,5 @@ sudo apt install $(cat packages.list)
 # Install fonts to system
 sudo cp ./fonts/* /usr/share/fonts/
 echo "Fonts installed to /usr/share/fonts/"
+
+sudo dpkg-reconfigure console-setup
